@@ -1,0 +1,16 @@
+run = "streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true"
+modules = ["python-3.11"]
+hidden = ["venv", ".config"]
+
+[nix]
+channel = "stable-23_11"
+
+[unitTest]
+language = "python3"
+
+[deployment]
+run = ["sh", "-c", "streamlit run app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true"]
+deploymentTarget = "cloudrun"
+
+[env]
+STREAMLIT_SERVER_HEADLESS = "true"
